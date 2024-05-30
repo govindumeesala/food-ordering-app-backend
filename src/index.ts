@@ -25,6 +25,7 @@ app.get("/health", (req: Request, res: Response) => {
 });
 
 // server
-app.listen(7000, () => {
-  console.log("app started at port 7000");
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
