@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import myUserRoute from "./routes/MyUserRoute";
 import myRestaurantRoute from "./routes/MyRestaurantRoute";
 import { v2 as cloudinary } from "cloudinary";
+import restaurantRoute from "./routes/RestaurantRoute";
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(cors());
 // routes
 app.use("/api/my/user", myUserRoute);
 app.use("/api/my/restaurant", myRestaurantRoute);
+app.use("/api/restaurant", restaurantRoute);
 
 app.get("/health", (req: Request, res: Response) => {
   res.send({ message: "health OK!" });
