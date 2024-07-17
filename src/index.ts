@@ -6,6 +6,7 @@ import myUserRoute from "./routes/MyUserRoute";
 import myRestaurantRoute from "./routes/MyRestaurantRoute";
 import { v2 as cloudinary } from "cloudinary";
 import restaurantRoute from "./routes/RestaurantRoute";
+import orderRoute from "./routes/OrderRoute";
 
 const app = express();
 
@@ -23,14 +24,19 @@ cloudinary.config({
 
 // middleware
 
-// converting api req to json
-app.use(express.json());
 // security
 app.use(cors());
+
+app.use("/api/order/checkout/webhook", express.raw({ type: "*/*" }));
+
+// converting api req to json
+app.use(express.json());
+
 // routes
 app.use("/api/my/user", myUserRoute);
 app.use("/api/my/restaurant", myRestaurantRoute);
 app.use("/api/restaurant", restaurantRoute);
+app.use("/api/order", orderRoute);
 
 app.get("/health", (req: Request, res: Response) => {
   res.send({ message: "health OK!" });
