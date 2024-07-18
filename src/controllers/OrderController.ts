@@ -9,7 +9,7 @@ const STRIPE_ENDPOINT_SECRET = process.env.STRIPE_WEEBHOOK_SECRET as string;
 
 const getMyOrders = async (req: Request, res: Response) => {
   try {
-    const orders = await Order.findById(req.userId)
+    const orders = await Order.find({ user: req.userId })
       .populate("restaurant")
       .populate("user");
 

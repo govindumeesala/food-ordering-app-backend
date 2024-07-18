@@ -15,6 +15,22 @@ const upload = multer({
 });
 
 // /api/my/restaurant
+router.get(
+  "/order",
+  jwtCheck,
+  jwtParse,
+  MyRestaurantController.getMyRestaurantOrders
+);
+
+// patch used to update a part of an entity
+// put used to update an entire entity
+router.patch(
+  "/order/:orderId/status",
+  jwtCheck,
+  jwtParse,
+  MyRestaurantController.updateOrderStatus
+);
+
 router.get("/", jwtCheck, jwtParse, MyRestaurantController.getMyRestaurant);
 
 router.post(
