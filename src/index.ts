@@ -2,11 +2,11 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
-import myUserRoute from "../src/routes/MyUserRoute";
-import myRestaurantRoute from "../src/routes/MyRestaurantRoute";
+import myUserRoute from "./routes/MyUserRoute";
+import myRestaurantRoute from "./routes/MyRestaurantRoute";
 import { v2 as cloudinary } from "cloudinary";
-import restaurantRoute from "../src/routes/RestaurantRoute";
-import orderRoute from "../src/routes/OrderRoute";
+import restaurantRoute from "./routes/RestaurantRoute";
+import orderRoute from "./routes/OrderRoute";
 
 const app = express();
 
