@@ -7,7 +7,6 @@ import myRestaurantRoute from "../src/routes/MyRestaurantRoute";
 import { v2 as cloudinary } from "cloudinary";
 import restaurantRoute from "../src/routes/RestaurantRoute";
 import orderRoute from "../src/routes/OrderRoute";
-import { VercelRequest, VercelResponse } from "@vercel/node";
 
 const app = express();
 
@@ -45,6 +44,4 @@ app.get("/health", (req: Request, res: Response) => {
 });
 
 // Export the app as a Vercel serverless function handler
-export default (req: VercelRequest, res: VercelResponse) => {
-  app(req, res); // Delegate the request to your Express app
-};
+export default app;
