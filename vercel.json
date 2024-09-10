@@ -1,0 +1,7 @@
+{
+  "build": {
+    "command": "tsc"
+  },
+  "output": "dist",
+  "routes": [{ "src": "/(.*)", "dest": "/dist/index.js" }]
+}
