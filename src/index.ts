@@ -1,4 +1,5 @@
-import express, { Request, Response } from "express";
+import { VercelRequest, VercelResponse } from "@vercel/node";
+import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
@@ -24,13 +25,8 @@ cloudinary.config({
 });
 
 // Middleware
-
-// Security
 app.use(cors());
-
 app.use("/api/order/checkout/webhook", express.raw({ type: "*/*" }));
-
-// Converting API requests to JSON
 app.use(express.json());
 
 // Routes
@@ -39,11 +35,11 @@ app.use("/api/my/restaurant", myRestaurantRoute);
 app.use("/api/restaurant", restaurantRoute);
 app.use("/api/order", orderRoute);
 
-app.get("/health", (req: Request, res: Response) => {
+app.get("/health", (req: express.Request, res: express.Response) => {
   res.send({ message: "Health OK!" });
 });
 
 // Export the handler for Vercel
-export default (req: Request, res: Response) => {
+export default (req: VercelRequest, res: VercelResponse) => {
   app(req, res);
 };
