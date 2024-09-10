@@ -43,5 +43,7 @@ app.get("/health", (req: Request, res: Response) => {
   res.send({ message: "Health OK!" });
 });
 
-// Export the app as a Vercel serverless function handler
-export default app;
+// Export the handler for Vercel
+export default (req: Request, res: Response) => {
+  app(req, res);
+};
